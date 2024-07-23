@@ -7,9 +7,10 @@
     <title>Technology - Folie Des Degeneres</title>
     <link rel="icon" type="image/x-icon" href="./assets/start-here.svg">
     <link rel="stylesheet" href="styles.css">
+    <script src="taskbar.js"></script>
 </head>
 
-<body onload="init();">
+<body class="crt">
     <div id="desktop">
         <div id="taskbar">
             <div class="hamburger-menu" onclick="toggleMenu()" title="Expand Menu">
@@ -23,80 +24,56 @@
                 <img src="./assets/start-here.svg" alt="Start" style="vertical-align: middle;">
                 Start
             </button>
-            <button class="app-icon" onclick="window.location.href='index.html'" title="Home Page">
-                <img src="./assets/xfce4-notes-plugin.svg" alt="Welcome" style="vertical-align: middle;">
-                Welcome
-            </button>
-            <button class="app-icon" onclick="window.location.href='aboutme.html'" title="About Me">
-                <img src="./assets/users.svg" alt="About Me" style="vertical-align: middle;">
-                About Me
-            </button>
-            <button class="app-icon" onclick="window.location.href='photography.html'" title="Photography">
-                <img src="./assets/camera.svg" alt="Photography" style="vertical-align: middle;">
-                Photography
-            </button>
-            <button class="app-icon" onclick="window.location.href='videography.html'" title="Videography">
-                <img src="./assets/camera-video.svg" alt="Videography" style="vertical-align: middle;">
-                Videography
-            </button>
-            <button class="app-icon active" onclick="window.location.href='technology.html'" title="Technology">
-                <img src="./assets/computer.svg" alt="Technology" style="vertical-align: middle;">
-                Technology
-            </button>
-            <button class="app-icon" onclick="window.location.href='writing.html'" title="Writing">
-                <img src="./assets/wordprocessing.svg" alt="Writing" style="vertical-align: middle;">
-                Writing
-            </button>
-            <button class="app-icon" onclick="window.location.href='contactme.html'" title="Contact Me">
-                <img src="./assets/phone.svg" alt="Contact Me" style="vertical-align: middle;">
-                Contact Me
-            </button>
-            <button class="app-icon" onclick="window.location.href='sitemap.html'" title="Site Map">
-                <img src="./assets/gnome-globe.svg" alt="Site Map" style="vertical-align: middle;">
-                Site Map
-            </button>
+            <div id="dynamic-windows"></div>
             <div id="clock" class="taskbar-clock" title="Clock">
                 00:00
             </div>
         </div>
         <div id="desktop-icons">
-            <a href="writing.html" class="icon-link" title="Writing">
+            <a href="javascript:void(0);" onclick="toggleWindow('writing.html', true);" class="icon-link"
+                title="Writing">
                 <img src="./assets/wordprocessing.svg" alt="Word Processing" class="desktop-icon">
                 <span class="icon-label">
                     Writing
                 </span>
             </a>
-            <a href="technology.html" class="icon-link" title="Technology">
+            <a href="javascript:void(0);" onclick="toggleWindow('technology.html', true);" class="icon-link"
+                title="Technology">
                 <img src="./assets/computer.svg" alt="Technology" class="desktop-icon">
                 <span class="icon-label">
                     Technology
                 </span>
             </a>
-            <a href="aboutme.html" class="icon-link" title="About Me">
+            <a href="javascript:void(0);" onclick="toggleWindow('aboutme.html', true);" class="icon-link"
+                title="About Me">
                 <img src="./assets/users.svg" alt="About Me" class="desktop-icon">
                 <span class="icon-label">
                     About Me
                 </span>
             </a>
-            <a href="photography.html" class="icon-link" title="Photography">
+            <a href="javascript:void(0);" onclick="toggleWindow('photography.html', true);" class="icon-link"
+                title="Photography">
                 <img src="./assets/camera.svg" alt="Photography" class="desktop-icon">
                 <span class="icon-label">
                     Photography
                 </span>
             </a>
-            <a href="videography.html" class="icon-link" title="Videography">
+            <a href="javascript:void(0);" onclick="toggleWindow('videography.html', true);" class="icon-link"
+                title="Videography">
                 <img src="./assets/camera-video.svg" alt="Videography" class="desktop-icon">
                 <span class="icon-label">
                     Videography
                 </span>
             </a>
-            <a href="contactme.html" class="icon-link" title="Contact Me">
+            <a href="javascript:void(0);" onclick="toggleWindow('contactme.html', true);" class="icon-link"
+                title="Contact Me">
                 <img src="./assets/phone.svg" alt="Contact Me" class="desktop-icon">
                 <span class="icon-label">
                     Contact Me
                 </span>
             </a>
-            <a href="sitemap.html" class="icon-link" title="Site Map">
+            <a href="javascript:void(0);" onclick="toggleWindow('sitemap.html', true);" class="icon-link"
+                title="Site Map">
                 <img src="./assets/gnome-globe.svg" alt="Site Map" class="desktop-icon">
                 <span class="icon-label">
                     Site Map
@@ -110,12 +87,14 @@
                     Technology
                 </div>
                 <div class="window-controls">
-                    <a href="./blank_pages/technology_blank.html" class="blank-technology">
-                        <img src="./assets/window-minimize.png" alt="Minimize" class="window-control" onclick="minimizeWindow('photo')" title="Minimize">
+                    <a href="javascript:void(0);" class="blank-control" onclick="minimizeWindow('technology.html')"
+                        title="Minimize">
+                        <img src="./assets/window-minimize.png" alt="Minimize" class="window-control" title="Minimize">
                     </a>
-                    <img src="./assets/window-maximize.png" alt="Maximize" class="window-control" onclick="maximizeWindow()" title="Maximize">
-                    <a href="./blank_pages/blank.html" class="blank-page">
-                        <img src="./assets/window-close.png" alt="Close" class="window-control" onclick="closeWindow('photo')" title="Close">
+                    <img src="./assets/window-maximize.png" alt="Maximize" class="window-control"
+                        onclick="maximizeWindow('window-technology')" title="Maximize">
+                    <a href="javascript:void(0);" class="blank-page" onclick="closeWindow('technology.html')">
+                        <img src="./assets/window-close.png" alt="Close" class="window-control" title="Close">
                     </a>
                 </div>
             </div>
@@ -130,7 +109,7 @@
                             Arch Linux Custom Repository
                         </div>
                         <p class="project-description">
-                           A personal Arch repository to hold my own scripts and packages.
+                            A personal Arch repository to hold my own scripts and packages.
                         </p>
                     </a>
                     <a href="https://github.com/jefrecantuledesma/.config" class="project-entry">
@@ -138,7 +117,8 @@
                             ~/.config
                         </div>
                         <p class="project-description">
-                            This is my .config folder for my Arch distribution running Sway, Waybar, and Foot as some of the most important applications. 
+                            This is my .config folder for my Arch distribution running Sway, Waybar, and Foot as some of
+                            the most important applications.
                         </p>
                     </a>
                 </div>
@@ -147,9 +127,9 @@
                 </div>
                 <p class="description">
                     While it may not seem so, technology is an art form. I see
-                    my programming as a form of self-expression. Additionally, 
+                    my programming as a form of self-expression. Additionally,
                     my programmming expertise can be used for artistic purposes,
-                    such as creating scripts for editing photos and videos. 
+                    such as creating scripts for editing photos and videos.
                 </p>
             </div>
         </div>
@@ -157,88 +137,37 @@
     <div id="vertical-menu" class="vertical-menu">
         <center>
             <button class="app-icon-vertical" title="Home Page" onclick="window.location.href='index.html'">
-               Welcome
-               </button>
-               <button class="app-icon-vertical" title="About Me" onclick="window.location.href='aboutme.html'">
-               About Me
-               </button>
-               <button class="app-icon-vertical" title="Photography" onclick="window.location.href='photography.html'">
-               Photography
-               </button>
-               <button class="app-icon-vertical" title="Videography" onclick="window.location.href='videography.html'">
-               Videography
-               </button>
-               <button class="app-icon-vertical" title="Technology" onclick="window.location.href='technology.html'">
-               Technology
-               </button>
-               <button class="app-icon-vertical" title="Writing" onclick="window.location.href='writing.html'">
-               Writing
-               </button>
-               <button class="app-icon-vertical" title="Contact Me" onclick="window.location.href='contactme.html'">
-               Contact Me
-               </button>
-               <button class="app-icon-vertical" title="Site Map" onclick="window.location.href='sitemap.html'">
-               Site Map
-               </button>
+                Welcome
+            </button>
+            <button class="app-icon-vertical" title="About Me" onclick="window.location.href='aboutme.html'">
+                About Me
+            </button>
+            <button class="app-icon-vertical" title="Photography" onclick="window.location.href='photography.html'">
+                Photography
+            </button>
+            <button class="app-icon-vertical" title="Videography" onclick="window.location.href='videography.html'">
+                Videography
+            </button>
+            <button class="app-icon-vertical" title="Technology" onclick="window.location.href='technology.html'">
+                Technology
+            </button>
+            <button class="app-icon-vertical" title="Writing" onclick="window.location.href='writing.html'">
+                Writing
+            </button>
+            <button class="app-icon-vertical" title="Contact Me" onclick="window.location.href='contactme.html'">
+                Contact Me
+            </button>
+            <button class="app-icon-vertical" title="Site Map" onclick="window.location.href='sitemap.html'">
+                Site Map
+            </button>
         </center>
-    </div>   
+    </div>
 </body>
 
 <script>
-    function updateClock() {
-        const now = new Date();
-        const hours = String(now.getHours()).padStart(2, '0');
-        const minutes = String(now.getMinutes()).padStart(2, '0');
-        document.getElementById('clock').textContent = hours + ':' + minutes;
-    }
-
-    setInterval(updateClock, 1000);
-    updateClock(); 
-</script>
-
-<script>
-function toggleMenu() {
-    var menu = document.getElementById('vertical-menu');
-    var hamburger = document.querySelector('.hamburger-menu');
-    var icons = document.querySelectorAll('.app-icon-vertical'); 
-    var isVisible = menu.style.display === 'block'; 
-    
-    menu.style.display = isVisible ? 'none' : 'block';
-    
-    icons.forEach(function(icon) {
-        icon.style.display = isVisible ? 'none' : 'block';
+    document.querySelector('.start-button').addEventListener('click', function () {
+        toggleWindow('index.html', true);
     });
-    if (isVisible) {
-        hamburger.style.right = '0';
-    } else {
-        hamburger.style.right = '30%';
-    }
-}
-</script>
-
-<script>
-function maximizeWindow() {
-    var windowElement = document.getElementById('window-technology');
-    var isMaximized = windowElement.classList.contains('maximized');
-    
-    if (isMaximized) {
-        windowElement.style.removeProperty('width');
-        windowElement.style.removeProperty('height');
-        windowElement.style.removeProperty('top');
-        windowElement.style.removeProperty('left');
-        windowElement.style.removeProperty('right');
-        windowElement.style.removeProperty('margin');
-        windowElement.classList.remove('maximized');
-    } else { 
-        windowElement.style.width = '100vw';
-        windowElement.style.height = '100vh';
-        windowElement.style.top = '0';
-        windowElement.style.left = '0';
-        windowElement.style.right = '0';
-        windowElement.style.margin = '0';
-        windowElement.classList.add('maximized');
-    }
-}
 </script>
 
 </html>
