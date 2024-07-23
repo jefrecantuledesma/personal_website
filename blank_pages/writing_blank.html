@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desktop - Folie Des Degeneres</title>
+    <link rel="icon" type="image/x-icon" href="../assets/start-here.svg">
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body onload="init();">
+    <div id="desktop">
+        <div id="taskbar">
+            <div class="hamburger-menu" onclick="toggleMenu()" title="Expand Menu">
+                <center>
+                    <div class="bar1"></div>
+                    <div class="bar2"></div>
+                    <div class="bar3"></div>
+                </center>
+            </div>
+            <button class="start-button" onclick="window.location.href='../index.html'" title="Home Page">
+                <img src="../assets/start-here.svg" alt="Start" style="vertical-align: middle;">
+                Start
+            </button>
+            <button class="app-icon" onclick="window.location.href='../index.html'" title="Home Page">
+                <img src="../assets/xfce4-notes-plugin.svg" alt="Welcome" style="vertical-align: middle;">
+                Welcome
+            </button>
+            <button class="app-icon" onclick="window.location.href='../aboutme.html'" title="About Me">
+                <img src="../assets/users.svg" alt="About Me" style="vertical-align: middle;">
+                About Me
+            </button>
+            <button class="app-icon" onclick="window.location.href='../photography.html'" title="Photography">
+                <img src="../assets/camera.svg" alt="Photography" style="vertical-align: middle;">
+                Photography
+            </button>
+            <button class="app-icon" onclick="window.location.href='../videography.html'" title="Videography">
+                <img src="../assets/camera-video.svg" alt="Videography" style="vertical-align: middle;">
+                Videography
+            </button>
+            <button class="app-icon" onclick="window.location.href='../technology.html'" title="Technology">
+                <img src="../assets/computer.svg" alt="Technology" style="vertical-align: middle;">
+                Technology
+            </button>
+            <button class="app-icon active" onclick="window.location.href='../writing.html'" title="Writing">
+                <img src="../assets/wordprocessing.svg" alt="Writing" style="vertical-align: middle;">
+                Writing
+            </button>
+            <button class="app-icon" onclick="window.location.href='../contactme.html'" title="Contact Me">
+                <img src="../assets/phone.svg" alt="Contact Me" style="vertical-align: middle;">
+                Contact Me
+            </button>
+            <button class="app-icon" onclick="window.location.href='../sitemap.html'" title="Site Map">
+                <img src="../assets/gnome-globe.svg" alt="Site Map" style="vertical-align: middle;">
+                Site Map
+            </button>
+            <div id="clock" class="taskbar-clock" title="Clock">
+                00:00
+            </div>
+        </div>
+        <div id="desktop-icons">
+            <a href="../writing.html" class="icon-link" title="Writing">
+                <img src="../assets/wordprocessing.svg" alt="Word Processing" class="desktop-icon">
+                <span class="icon-label">
+                    Writing
+                </span>
+            </a>
+            <a href="../technology.html" class="icon-link" title="Technology">
+                <img src="../assets/computer.svg" alt="Technology" class="desktop-icon">
+                <span class="icon-label">
+                    Technology
+                </span>
+            </a>
+            <a href="../aboutme.html" class="icon-link" title="About Me">
+                <img src="../assets/users.svg" alt="About Me" class="desktop-icon">
+                <span class="icon-label">
+                    About Me
+                </span>
+            </a>
+            <a href="../photography.html" class="icon-link" title="Photography">
+                <img src="../assets/camera.svg" alt="Photography" class="desktop-icon">
+                <span class="icon-label">
+                    Photography
+                </span>
+            </a>
+            <a href="../videography.html" class="icon-link" title="Videography">
+                <img src="../assets/camera-video.svg" alt="Videography" class="desktop-icon">
+                <span class="icon-label">
+                    Videography
+                </span>
+            </a>
+            <a href="../contactme.html" class="icon-link" title="Contact Me">
+                <img src="../assets/phone.svg" alt="Contact Me" class="desktop-icon">
+                <span class="icon-label">
+                    Contact Me
+                </span>
+            </a>
+            <a href="../sitemap.html" class="icon-link" title="Site Map">
+                <img src="../assets/gnome-globe.svg" alt="Site Map" class="desktop-icon">
+                <span class="icon-label">
+                    Site Map
+                </span>
+            </a>
+        </div>
+        <div id="vertical-menu" class="vertical-menu">
+            <center>
+                <button class="app-icon-vertical" title="Home Page" onclick="window.location.href='../index.html'">
+                    Welcome
+                </button>
+                <button class="app-icon-vertical" title="About Me" onclick="window.location.href='../aboutme.html'">
+                    About Me
+                </button>
+                <button class="app-icon-vertical" title="Photography" onclick="window.location.href='../photography.html'">
+                    Photography
+                </button>
+                <button class="app-icon-vertical" title="Videography" onclick="window.location.href='../videography.html'">
+                    Videography
+                </button>
+                <button class="app-icon-vertical" title="Technology" onclick="window.location.href='../technology.html'">
+                    Technology
+                </button>
+                <button class="app-icon-vertical" title="Writing" onclick="window.location.href='../writing.html'">
+                    Writing
+                </button>
+                <button class="app-icon-vertical" title="Contact Me" onclick="window.location.href='../contactme.html'">
+                    Contact Me
+                </button>
+                <button class="app-icon-vertical" title="Site Map" onclick="window.location.href='../sitemap.html'">
+                    Site Map
+                </button>
+            </center>
+        </div>
+    </div>
+</body>
+
+<script>
+    function updateClock() {
+        const now = new Date();
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        document.getElementById('clock').textContent = hours + ':' + minutes;
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock(); 
+</script>
+
+<script>
+function toggleMenu() {
+    var menu = document.getElementById('vertical-menu');
+    var hamburger = document.querySelector('.hamburger-menu');
+    var icons = document.querySelectorAll('.app-icon-vertical'); 
+    var isVisible = menu.style.display === 'block'; 
+    
+    menu.style.display = isVisible ? 'none' : 'block';
+    
+    icons.forEach(function(icon) {
+        icon.style.display = isVisible ? 'none' : 'block';
+    });
+    if (isVisible) {
+        hamburger.style.right = '0';
+    } else {
+        hamburger.style.right = '30%';
+    }
+}
+</script>
+
+</html>
